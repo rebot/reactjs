@@ -47,7 +47,11 @@ const ProductRow = ({ name, price }) => {
 };
 
 const ProductCategoryRow = ({ category }) => {
-  return <p>{category}</p>;
+  return (
+    <tr>
+      <td>{category}</td>
+    </tr>
+  );
 };
 
 const ProductTable = ({ state, data }) => {
@@ -64,7 +68,7 @@ const ProductTable = ({ state, data }) => {
         {categories.map(category => {
           return (
             <>
-              <ProductCategoryRow category={category} />
+              <ProductCategoryRow key={category} category={category} />
               {data
                 .filter(
                   e =>
@@ -72,9 +76,13 @@ const ProductTable = ({ state, data }) => {
                     e.name.toLowerCase().includes(state.filter) &&
                     (state.inStock === true ? e.stocked === true : true)
                 )
-                .map(product => {
+                .map((product, index) => {
                   return (
-                    <ProductRow name={product.name} price={product.price} />
+                    <ProductRow
+                      key={index}
+                      name={product.name}
+                      price={product.price}
+                    />
                   );
                 })}
             </>
