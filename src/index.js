@@ -49,7 +49,7 @@ const ProductRow = ({ name, price }) => {
 const ProductCategoryRow = ({ category }) => {
   return (
     <tr>
-      <td>{category}</td>
+      <td><b>{category}</b></td>
     </tr>
   );
 };
